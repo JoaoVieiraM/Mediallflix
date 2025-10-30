@@ -104,16 +104,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Fallback para garantir que conteúdo apareça mesmo se JavaScript falhar -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+      </style>
+    </noscript>
+
     <style>
-      /* Scroll reveal animation */
+      /* Scroll reveal animation com fallback automático */
       .reveal {
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        /* Fallback: após 2s torna visível automaticamente caso JS não execute */
+        animation: reveal-fallback 0.1s ease-out 2s forwards;
       }
       .reveal.active {
         opacity: 1;
         transform: translateY(0);
+        animation: none; /* Cancela fallback se .active foi adicionado */
+      }
+
+      @keyframes reveal-fallback {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* Custom scrollbar */
