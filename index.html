@@ -150,6 +150,52 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #006666;
       }
+
+      /* Infinite Logo Carousel Animation */
+      .logo-carousel {
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: 3rem;
+      }
+      .logo-carousel:hover .logo-track {
+        animation-play-state: paused;
+      }
+      .logo-track {
+        display: flex;
+        gap: 3rem;
+        animation: scroll-logos 30s linear infinite;
+      }
+      @keyframes scroll-logos {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .logo-item {
+        flex-shrink: 0;
+        width: 180px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        transition: all 0.3s ease;
+      }
+      .logo-item:hover {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        transform: translateY(-4px);
+      }
+      .logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
     </style>
 </head>
 <body class="font-sans text-gray-900 bg-white">
@@ -167,15 +213,18 @@
     <header class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-40 transition-all duration-300 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold">Mediall<span class="text-burgundy">Flix</span></h1>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <img src="assets/logomedsembg.png" alt="MediallFlix" class="h-16 md:h-20 w-auto">
+                    <span class="text-xl md:text-2xl font-bold">
+                        Mediall<span class="text-burgundy">Flix</span>
+                    </span>
                 </div>
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="#beneficios" class="text-gray-700 hover:text-burgundy transition-colors duration-200 font-medium">Benefícios</a>
                     <a href="#planos" class="text-gray-700 hover:text-burgundy transition-colors duration-200 font-medium">Planos</a>
                     <a href="#depoimentos" class="text-gray-700 hover:text-burgundy transition-colors duration-200 font-medium">Depoimentos</a>
                     <a href="#faq" class="text-gray-700 hover:text-burgundy transition-colors duration-200 font-medium">FAQ</a>
-                    <a href="#planos" class="bg-teal hover:bg-teal-dark text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">Assinar Agora</a>
+                    <a href="#planos" class="bg-burgundy hover:bg-burgundy-dark text-white font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">Assinar Agora</a>
                 </nav>
                 <button class="mobile-menu-toggle md:hidden flex flex-col space-y-1.5 p-2" aria-label="Menu">
                     <span class="block w-6 h-0.5 bg-gray-900 transition-all duration-300"></span>
@@ -194,7 +243,7 @@
             <a href="#depoimentos" class="text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors font-medium">Depoimentos</a>
             <a href="#faq" class="text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors font-medium">FAQ</a>
             <hr class="border-gray-200 my-2">
-            <a href="#planos" class="bg-teal hover:bg-teal-dark text-white py-3 px-6 rounded-lg text-center font-semibold transition-all duration-300 mt-2">Assinar Agora</a>
+            <a href="#planos" class="bg-burgundy hover:bg-burgundy-dark text-white py-3 px-6 rounded-lg text-center font-semibold transition-all duration-300 mt-2">Assinar Agora</a>
         </nav>
     </div>
 
@@ -236,7 +285,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                        <a href="#planos" class="bg-teal hover:bg-teal-dark text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center">
+                        <a href="#planos" class="bg-burgundy hover:bg-burgundy-dark text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg inline-flex items-center justify-center">
                             Escolha Seu Plano Agora
                             <svg class="w-5 h-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -347,7 +396,7 @@
                             </div>
                         </li>
                     </ul>
-                    <a href="#planos" class="bg-teal hover:bg-teal-dark text-white font-semibold px-6 py-3 rounded-lg inline-flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    <a href="#planos" class="bg-burgundy hover:bg-burgundy-dark text-white font-semibold px-6 py-3 rounded-lg inline-flex items-center transition-all duration-300 hover:scale-105 hover:shadow-lg">
                         Quero Economizar Agora
                     </a>
                 </div>
@@ -488,18 +537,57 @@
                 <h3 class="text-sm font-bold text-burgundy uppercase tracking-wide mb-2">Parceiros de Confiança</h3>
                 <h2 class="text-3xl font-bold text-gray-900">Empresas que Você Conhece e Confia</h2>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Drogasil</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Pague Menos</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">CNA</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Magazine Luiza</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Carrefour</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Hertz</div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-semibold text-gray-700">Veneza Water Park</div>
-                <div class="bg-burgundy text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center justify-center text-center font-bold">+ 6.493 parceiros</div>
+            <!-- Logo Carousel -->
+            <div class="logo-carousel reveal">
+                <div class="logo-track">
+                    <!-- First set of logos -->
+                    <div class="logo-item">
+                        <img src="assets/logodrogasil.png" alt="Drogasil">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/paguemenoslogo.png" alt="Pague Menos">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logoCNA.png" alt="CNA">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/magalu.png" alt="Magazine Luiza">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logocarrefour.png" alt="Carrefour">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/hertz..png" alt="Hertz">
+                    </div>
+                    <div class="logo-item bg-burgundy">
+                        <span class="text-white font-bold text-center">+ 6.493<br>parceiros</span>
+                    </div>
+                    <!-- Duplicate set for infinite loop -->
+                    <div class="logo-item">
+                        <img src="assets/logodrogasil.png" alt="Drogasil">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/paguemenoslogo.png" alt="Pague Menos">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logoCNA.png" alt="CNA">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/magalu.png" alt="Magazine Luiza">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/logocarrefour.png" alt="Carrefour">
+                    </div>
+                    <div class="logo-item">
+                        <img src="assets/hertz..png" alt="Hertz">
+                    </div>
+                    <div class="logo-item bg-burgundy">
+                        <span class="text-white font-bold text-center">+ 6.493<br>parceiros</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </section>1
 
     <!-- Plans Section -->
     <section class="py-16 md:py-24 bg-gray-50" id="planos">
@@ -554,7 +642,7 @@
 
                 <!-- Familiar Plan (Featured) -->
                 <div class="reveal bg-gradient-to-br from-burgundy to-burgundy-dark rounded-2xl shadow-2xl p-8 relative transform scale-105 hover:scale-110 transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-teal text-white px-4 py-1 rounded-bl-lg rounded-tr-2xl text-sm font-bold">Mais Popular</div>
+                    <div class="absolute top-0 right-0 bg-burgundy text-white px-4 py-1 rounded-bl-lg rounded-tr-2xl text-sm font-bold">Mais Popular</div>
                     <div class="mb-6">
                         <h3 class="text-2xl font-bold text-white mb-2">Familiar</h3>
                         <p class="text-gray-200">Ideal para cuidar de toda a família</p>
@@ -597,7 +685,7 @@
                             <span>Pronto atendimento</span>
                         </li>
                     </ul>
-                    <a href="#contato" class="block w-full bg-teal hover:bg-teal-dark text-white font-semibold px-6 py-3 rounded-lg text-center transition-all duration-300 hover:scale-105 shadow-lg">Escolher Plano</a>
+                    <a href="#contato" class="block w-full bg-burgundy hover:bg-burgundy-dark text-white font-semibold px-6 py-3 rounded-lg text-center transition-all duration-300 hover:scale-105 shadow-lg">Escolher Plano</a>
                 </div>
 
                 <!-- Familiar + Psychology Plan -->
@@ -924,7 +1012,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Mediall<span class="text-burgundy-light">Flix</span></h3>
+                    <img src="assets/logomedsembg.png" alt="MediallFlix" class="h-12 w-auto mb-4">
                     <p class="text-gray-400 mb-4">Seu clube de benefícios completo com saúde e economia.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200" aria-label="TikTok">
