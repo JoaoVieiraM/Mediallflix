@@ -79,21 +79,21 @@ function initHeader() {
 
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const nav = document.querySelector('nav');
+    const mobileMenu = document.querySelector('.mobile-menu');
 
-    if (!menuToggle || !nav) return;
+    if (!menuToggle || !mobileMenu) return;
 
     menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('hidden');
+        mobileMenu.classList.toggle('hidden');
         menuToggle.classList.toggle('active');
         document.body.classList.toggle('overflow-hidden');
     });
 
     // Close menu when clicking nav link
-    const navLinks = nav.querySelectorAll('a');
+    const navLinks = mobileMenu.querySelectorAll('a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            nav.classList.add('hidden');
+            mobileMenu.classList.add('hidden');
             menuToggle.classList.remove('active');
             document.body.classList.remove('overflow-hidden');
         });
@@ -101,8 +101,8 @@ function initMobileMenu() {
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
-            nav.classList.add('hidden');
+        if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
             menuToggle.classList.remove('active');
             document.body.classList.remove('overflow-hidden');
         }
@@ -115,30 +115,16 @@ function initMobileMenu() {
 function addMobileMenuStyles() {
     const style = document.createElement('style');
     style.textContent = `
-        @media (max-width: 768px) {
-            nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-                z-index: 30;
-            }
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
 
-            .mobile-menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
 
-            .mobile-menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -6px);
-            }
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
     `;
     document.head.appendChild(style);
